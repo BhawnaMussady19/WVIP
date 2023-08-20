@@ -1,0 +1,65 @@
+import java.util.*;
+
+class Calculator {
+    public double add(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    public double sub(int num1, int num2) {
+        return num1 - num2;
+    }
+
+    public double mul(int num1, int num2) {
+        return num1 * num2;
+    }
+
+    public double div(int num1, int num2) {
+        return (double) num1 / num2;
+    }
+}
+
+public class Result extends Calculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("1-addition 2-subtraction 3-multiplication 4-division");
+        System.out.println("Enter your choice");
+        int choice = sc.nextInt();
+
+        if (choice < 1 || choice > 4) {
+            System.out.println("Invalid choice");
+            sc.close();
+            return;
+        }
+
+        System.out.println("Enter first number");
+        int first = sc.nextInt();
+        System.out.println("Enter second number");
+        int second = sc.nextInt();
+
+        double result = 0;
+        Result r = new Result();
+        switch (choice) {
+            case 1:
+                result = r.add(first, second);
+                break;
+            case 2:
+                result = r.sub(first, second);
+                break;
+            case 3:
+                result = r.mul(first, second);
+                break;
+            case 4:
+                if (second == 0) {
+                    System.out.println("Division by zero is not allowed");
+                    sc.close();
+                    return;
+                }
+                result = r.div(first, second);
+                break;
+        }
+
+        System.out.println("Result is " + result);
+        sc.close();
+    }
+}
