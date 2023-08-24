@@ -1,0 +1,34 @@
+import java.util.*;
+public class Numberguess
+{
+public static void main(String[]args)
+{
+Scanner sc=new Scanner(System.in);
+int minrange;
+int maxrange;
+System.out.println("welcome to number guessing game:");
+System.out.println("enter the minrange");
+minrange=sc.nextInt();
+System.out.println("enter the maxrange");
+maxrange=sc.nextInt();
+System.out.println(" I have choosen a number between"+ minrange + "and "+ maxrange+ " now you have to guess it right!");
+int randomNumber = new Random().nextInt(maxrange - minrange + 1) + minrange;
+int attempts=0;
+while (true) {
+            System.out.print("Enter your guess: ");
+            int userGuess = sc.nextInt();
+            attempts++;
+
+            if (userGuess < randomNumber) {
+                System.out.println("Try again! The number is higher.");
+            } else if (userGuess > randomNumber) {
+                System.out.println("Try again! The number is lower.");
+            } else {
+                System.out.println("Congratulations! You've guessed the number " + randomNumber + " in " + attempts + " attempts.");
+                break;
+            }
+        }
+
+        sc.close();
+    }
+}
